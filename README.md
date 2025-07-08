@@ -1,24 +1,17 @@
-# Pre-entrega CURSO NODE - Gestión de Productos con FakeStore API.
+# CURSO NODE.
 
 ## Descripción
 
-Este proyecto es una herramienta de línea de comandos (CLI) para gestionar productos utilizando la FakeStore API. Permite consultar, crear y eliminar productos desde la terminal mediante comandos.
+Este es un repositorio en el cual se encuentra los trabajos realizados durante el curso.
 
 ## Requisitos
 
 - Node.js versión 18 o superior (para soporte nativo de `fetch`).
-- Conexión a internet para acceder a la FakeStore API.
+- Conexión a internet para acceder a la FakeStore API (preentrega-techlab).
 
 ## Cómo usar
 
 1. Clonar el repositorio:
-   - git clone https://github.com/juanmasisti/preentrega-techlab.git.
-   - cd preentrega-techlab.
-
-2. Ejecutar comandos con npm (EJEMPLOS):
-   - npm run start GET products               # Obtener todos los productos
-   - npm run start GET products/<productId>   # Obtener un producto por ID
-   - npm run start POST products <title> <price> <category>  # Crear un nuevo producto
-   - npm run start DELETE products/<productId>               # Eliminar un producto por ID
+   - git clone https://github.com/juanmasisti/Curso-Node.git.
 
    
