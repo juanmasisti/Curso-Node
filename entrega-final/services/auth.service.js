@@ -1,16 +1,31 @@
-// services/auth.service.js
-
 import jwt from 'jsonwebtoken';
+import * as usersModel from '../models/users.model.js'
 
-const users = [
-  { username: 'juanma', password: '123456' }
-];
+// const users = [
+//   { email: 'pepe@admin.com', password: '12345', role: 'admin' }
+// ];
 
-export const login = async (username, password) => {
-  const user = users.find(u => u.username === username && u.password === password);
-  if (!user) return null;
+export const login = async (email, password) => {
+  const user = await usersModel.getUserByEmail(email);
+  if (!user) {
+    return null; // Usuario no encontrado
+  }
 
-  // Generar token JWT
-  const token = jwt.sign({ username }, 'secret_jwt', { expiresIn: '1h' });
-  return token;
+  // Validar password, ejemplo simple con te
+  if (user.password !== password) {
+    return null; // Password incorrecta
+  }
+
+  // Crear payload
+  const payload = {
+    email: user.email,
+    role: user.role || 'user'
+  };
+
+  // Generar token
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN
+  });
+
+  return { token, user: payload };
 };

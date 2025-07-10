@@ -1,5 +1,3 @@
-// index.js
-
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -15,9 +13,9 @@ dotenv.config();
 const app = express();
 
 app.use(cors()); // habilita CORS, por defecto permite todas las solicitudes
-app.use(bodyParser.json()); // parsea JSON en body de requests
+app.use(bodyParser.json()); // parsea a JSON el body de requests, sin esto no se puede acceder a req.body
 
-// acá se definen las rutas
+// acá se definen las rutas y seteamos los controladores correspondientes
 app.use('/api/products', productsRoutes);
 app.use('/auth', authRoutes);
 
@@ -27,7 +25,7 @@ app.get('/', (req, res) => {
 
 // esto es si ninguna ruta coincide con las definidas antes
 // 404 handler
-app.use((req, res, next) => { // Middleware para manejar rutas no definidas (404)
+app.use((req, res, next) => { 
   res.status(404).json({
     error: 'Ruta no encontrada!',
   });

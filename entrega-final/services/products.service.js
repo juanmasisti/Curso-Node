@@ -1,25 +1,17 @@
-// services/products.service.js
+import * as productsModel from '../models/products.model.js';
 
-// Mock database temporal (falta config y conexión con Firestore)
-let products = [
-  { id: '1', name: 'Laptop Asus', price: 900 },
-  { id: '2', name: 'Monitor LG', price: 250 },
-];
-
-export const getAllProducts = async () => {
-  return products;
+export const getAllProducts = async () => { // acá puede haber mas validaciones
+  return await productsModel.getAllProducts();
 };
 
 export const getProductById = async (id) => {
-  return products.find(p => p.id === id);
+  return await productsModel.getProductById(id);
 };
 
 export const createProduct = async (product) => {
-  const newProduct = { ...product, id: String(products.length + 1) };
-  products.push(newProduct);
-  return newProduct;
+  return await productsModel.createProduct(product);
 };
 
 export const deleteProduct = async (id) => {
-  products = products.filter(p => p.id !== id);
+  return await productsModel.deleteProduct(id);
 };
